@@ -1,6 +1,6 @@
 #include "Casillero.h"
 
-Casillero::Casillero()
+Casillero::Casillero() // comprobacion de un espacio libre para moverse.
 {
     this->jugador = false;
     this->enemigo = false;

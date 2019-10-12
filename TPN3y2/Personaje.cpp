@@ -17,7 +17,7 @@ int Personaje::getY()
 
 void Personaje::ubicarPersonaje(int dimension, Casillero ***&c, QLabel ***&labels)
 {
-    int x1 = 0, y1 = 0;
+    int x1=0, y1=0;
     bool ocupado = 0;
 
     while(ocupado != 1){
@@ -27,20 +27,17 @@ void Personaje::ubicarPersonaje(int dimension, Casillero ***&c, QLabel ***&label
             this->x = x1;
             this->y = y1;
             ocupado = 1;
+
+
+
         }
-    }
-    /*if(c[a][b]->getEnemigo()==true){
-        c[a][b]->setDatos(true, false, true);
-        // set a scaled pixmap to a w x h window keeping its aspect ratio
-        this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
-        labels[a][b]->setPixmap(this->imagen);
-    }*/
+      }
 
-
-    c[x1][y1]->setDatos(true, true, false);
+    c[x1][y1]->setDatos(true, false, false);
     // set a scaled pixmap to a w x h window keeping its aspect ratio
     this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
     labels[x1][y1]->setPixmap(this->imagen);
+
 
 }
 
@@ -57,7 +54,7 @@ void Personaje::setY(int y)
 void Personaje::moverPersonaje(QKeyEvent *e, Casillero ***&c, QLabel ***&labels)
 {
     //Mover Jugador Derecha
-    if(e->key() == Qt::Key_Right){
+    if(e->key() == Qt::Key_D){
         if(c[this->x][this->y + 1]->getLibre() == true){
             QPixmap pixmap = labels[this->x][this->y + 1]->pixmap()->copy();
             labels[this->x][this->y + 1]->setPixmap(labels[this->x][this->y]->pixmap()->copy());
@@ -70,7 +67,7 @@ void Personaje::moverPersonaje(QKeyEvent *e, Casillero ***&c, QLabel ***&labels)
     }
 
     //Mover Jugador Izquierda
-    if(e->key() == Qt::Key_Left){
+    if(e->key() == Qt::Key_A){
         if(c[this->x][this->y - 1]->getLibre() == true){
             QPixmap pixmap = labels[this->x][this->y + 1]->pixmap()->copy();
             labels[this->x][this->y - 1]->setPixmap(labels[this->x][this->y]->pixmap()->copy());
@@ -83,7 +80,7 @@ void Personaje::moverPersonaje(QKeyEvent *e, Casillero ***&c, QLabel ***&labels)
     }
 
     //Mover Jugador Arriba
-    if(e->key() == Qt::Key_Up){
+    if(e->key() == Qt::Key_W){
         if(c[this->x - 1][this->y]->getLibre() == true){
             QPixmap pixmap = labels[this->x - 1][this->y]->pixmap()->copy();
             labels[this->x - 1][this->y]->setPixmap(labels[this->x][this->y]->pixmap()->copy());
@@ -96,7 +93,7 @@ void Personaje::moverPersonaje(QKeyEvent *e, Casillero ***&c, QLabel ***&labels)
     }
 
     //Mover Jugador Abajo
-    if(e->key() == Qt::Key_Down){
+    if(e->key() == Qt::Key_S){
         if(c[this->x + 1][this->y]->getLibre() == true){
             QPixmap pixmap = labels[this->x + 1][this->y]->pixmap()->copy();
             labels[this->x + 1][this->y]->setPixmap(labels[this->x][this->y]->pixmap()->copy());

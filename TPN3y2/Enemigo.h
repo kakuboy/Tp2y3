@@ -8,7 +8,7 @@ class Enemigo
 {
 public:
     Enemigo(QPixmap pixmap);
-    virtual void moverEnemigo(Casillero ***&casilla, QLabel ***&labels)=0;
+    virtual Casillero moverEnemigo(int k , int l ,Casillero ***&casilla)=0;
     virtual ~Enemigo();
 };
 

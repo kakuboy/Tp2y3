@@ -6,7 +6,6 @@
 #include <QTimer>
 #include <QMessageBox>
 #include <QKeyEvent>
-#include <QString>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -29,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 }
 
+
 void MainWindow::actualizarTiempo()
 {
     int secs = time_elapsed->elapsed() / 1000;
@@ -38,6 +38,7 @@ void MainWindow::actualizarTiempo()
 
     ui->puntaje2->setText(QString::number(secs/10));
 }
+
 
 void MainWindow::inicializarMatriz() {
     //En el ejemplo voy usando dim = 30
@@ -76,14 +77,14 @@ void MainWindow::inicializarMatriz() {
     for (int i = 0; i < dim; i++) {
         for (int j = 0; j < dim; j++) {
             if (this->getValorMatriz(i,j)) {
-                QPixmap pix("C:/Users/kakuboy/Desktop/Facultad/POO-Facultad/POO/2019/TP Nº2y3/TPN3y2/pared.png");
+                QPixmap pix("C:/Users/JOAKO/Desktop/TP quirolo/TP Nº2y3/TPN3y2/pared.png");
 
                 // set a scaled pixmap to a w x h window keeping its aspect ratio
                 pix = pix.scaled(17,17,Qt::KeepAspectRatio);
                 this->labels[i][j]->setPixmap(pix);
 
             } else {
-                QPixmap pix("C:/Users/kakuboy/Desktop/Facultad/POO-Facultad/POO/2019/TP Nº2y3/TPN3y2/piso.png");
+                QPixmap pix("C:/Users/JOAKO/Desktop/TP quirolo/TP Nº2y3/TPN3y2/piso.png");
 
                 // set a scaled pixmap to a w x h window keeping its aspect ratio
                 pix = pix.scaled(17,17,Qt::KeepAspectRatio);
@@ -118,7 +119,7 @@ int MainWindow::getValorMatriz(int i, int j) {
 
 void MainWindow::incializarPersonaje()
 {
-    QPixmap pixmap("C:/User/skakuboy/Desktop/Facultad/POO-Facultad/POO/2019/TP Nº2y3/TPN3y2/personaje.jpeg");
+    QPixmap pixmap("C:/Users/JOAKO/Desktop/TP quirolo/TP Nº2y3/TPN3y2/personaje.jpg");
     pixmap = pixmap.scaled(25,25,Qt::KeepAspectRatio);
     this->player = new Personaje(pixmap);
     this->player->ubicarPersonaje(this->dim + 2, this->casilla, this->labels);

@@ -1,4 +1,4 @@
-#ifndef PERSONAJE_H
+ #ifndef PERSONAJE_H
 #define PERSONAJE_H
 #include <QPixmap>
 #include <QLabel>
