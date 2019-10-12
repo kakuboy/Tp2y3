@@ -33,10 +33,10 @@ void Personaje::ubicarPersonaje(int dimension, Casillero ***&c, QLabel ***&label
         }
       }
 
-    c[x1][y1]->setDatos(true, false, false);
+    c[this->x][this->y]->setDatos(true, false, false);
     // set a scaled pixmap to a w x h window keeping its aspect ratio
     this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
-    labels[x1][y1]->setPixmap(this->imagen);
+    labels[this->x][this->y]->setPixmap(this->imagen);
 
 
 }

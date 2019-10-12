@@ -10,6 +10,10 @@
 #include "Personaje.h"
 #include "Casillero.h"
 #include "MatrizMadre.h"
+#include "Enemigo.h"
+#include "EnemigoAleatorio.h"
+#include "EnemigoPersigue.h"
+#include "EnemigoDobleSalto.h"
 
 namespace Ui {
 class MainWindow;
@@ -33,6 +37,8 @@ private:
     Ui::MainWindow *ui;
     int dim = 30;
     void inicializarMatriz();
+    void incializarEnemigo();
+    Enemigo * enemy;
     int getValorMatriz(int i, int j);
     void incializarPersonaje();
     QTimer* timer;

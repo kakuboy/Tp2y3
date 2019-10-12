@@ -113,8 +113,7 @@ void MainWindow::keyPressEvent(QKeyEvent *e) {
  * Yo retorno un valor aleatorio, pero ustedes tienen que usar la función del tp1.
  */
 int MainWindow::getValorMatriz(int i, int j) {
-    //return rand() % 2;
-    return laberinto[i][j];
+    return rand() % 2;
 }
 
 void MainWindow::incializarPersonaje()
@@ -124,3 +123,79 @@ void MainWindow::incializarPersonaje()
     this->player = new Personaje(pixmap);
     this->player->ubicarPersonaje(this->dim + 2, this->casilla, this->labels);
 }
+
+void MainWindow::incializarEnemigo()
+{   int segundos = time_elapsed->elapsed() / 1000;
+    segundos = segundos % 60;
+    double E=33.33;
+    double porcentajeE1 = 33.33;
+    double porcentajeE2 = 33.33;
+    double porcentajeE3 = 33.33;
+    int nro = rand() % 100;
+    if(nro <= porcentajeE1){
+
+        QPixmap pixmap("C:/Users/JOAKO/Desktop/TP quirolo/TP Nº2y3/TPN3y2/enemigo.jpg");
+        pixmap = pixmap.scaled(25,25,Qt::KeepAspectRatio);
+        this->enemy = new EnemigoAleatorio(pixmap);
+        this->enemy->ubicarEnemigo(this->dim + 2, this->casilla, this->labels);
+    }
+    else if(nro > porcentajeE1 && nro <= (porcentajeE1+porcentajeE2)){
+        // LLamo a que aparezca enemigo 2
+    }
+    else{
+        //LLamo a que aparezca enemigo 3
+    }
+
+    if(segundos>=20)
+    {porcentajeE3=E*1.10;
+     porcentajeE2=E*0.90;
+     porcentajeE1=E*0.90;}
+
+     if(segundos>=40)
+         porcentajeE3=E*1.20;
+         porcentajeE2=E*0.80;
+         porcentajeE1=E*0.80;
+
+         if(segundos>=60)
+             porcentajeE3=E*1.30;
+             porcentajeE2=E*0.70;
+             porcentajeE1=E*0.70;
+
+             if(segundos>=80)
+                 porcentajeE3=E*1.40;
+                 porcentajeE2=E*0.60;
+                 porcentajeE1=E*0.60;
+
+                 if(segundos>=100)
+                     porcentajeE3=E*1.50;
+                     porcentajeE2=E*0.50;
+                     porcentajeE1=E*0.50;
+
+                     if(segundos>=120)
+                         porcentajeE3=E*1.60;
+                         porcentajeE2=E*0.40;
+                         porcentajeE1=E*0.40;
+
+                         if(segundos>=140)
+                             porcentajeE3=E*1.70;
+                             porcentajeE2=E*0.30;
+                             porcentajeE1=E*0.30;
+
+                             if(segundos>=160)
+                                 porcentajeE3=E*1.80;
+                                 porcentajeE2=E*0.20;
+                                 porcentajeE1=E*0.20;
+
+                                 if(segundos>=180)
+                                     porcentajeE3=E*1.90;
+                                     porcentajeE2=E*0.10;
+                                     porcentajeE1=E*0.10;
+
+                                     if(segundos>=200)
+                                         porcentajeE3=E*2.00;
+                                         porcentajeE2=E*000;
+                                         porcentajeE1=E*000;
+
+}
+
+
