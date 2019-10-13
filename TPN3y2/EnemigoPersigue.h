@@ -4,11 +4,13 @@
 #include "Casillero.h"
 #include <QLabel>
 #include "Personaje.h"
-class EnemigoPersigue
+#include "Enemigo.h"
+
+class EnemigoPersigue : public Enemigo
 {
 public:
-    EnemigoPersigue();
-    Casillero moverEnemigo(int k , int l ,Casillero ***&casilla);
+    EnemigoPersigue(QPixmap);
+    void moverEnemigo(int k , int l ,Casillero ***&casilla,QLabel ***&labels);
     Personaje * player;
 };
 

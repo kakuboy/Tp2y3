@@ -38,12 +38,17 @@ private:
     int dim = 30;
     void inicializarMatriz();
     void incializarEnemigo();
+    void frecuenciaCreacEnemigos(int i);
     Enemigo * enemy;
+    EnemigoAleatorio * enemyA;
+    EnemigoPersigue * enemyP;
+    EnemigoDobleSalto * enemyDS;
     int getValorMatriz(int i, int j);
     void incializarPersonaje();
     QTimer* timer;
     QTime *time_elapsed;
     QLabel* time_label;
+    void colisionjugador(int k , int l);
 
 public slots:
     void keyPressEvent(QKeyEvent * e);

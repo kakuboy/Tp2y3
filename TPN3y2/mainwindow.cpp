@@ -8,6 +8,7 @@
 #include <QKeyEvent>
 
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -25,17 +26,22 @@ MainWindow::MainWindow(QWidget *parent) :
     time_label->setFont(QFont("digital-7",20,2,false));
 
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(actualizarTiempo()));
-
+    QObject::connect(timer,SIGNAL(timeout()),this,SLOT(inicializarEnemigo()));
 }
 
 
 void MainWindow::actualizarTiempo()
-{
+{   int k=this->player->getX();
+    int l=this->player->getY();
+
     int secs = time_elapsed->elapsed() / 1000;
     int mins = (secs / 60) % 60;
     secs = secs % 60;
     time_label->setText(QString("%1:%2").arg(mins, 2, 10, QLatin1Char('0')).arg(secs, 2, 10, QLatin1Char('0')) );
 
+    if(casilla[k][l]->getEnemigo())
+    {ui->puntaje2->setText(QString::number((secs/10)-1));}
+    else
     ui->puntaje2->setText(QString::number(secs/10));
 }
 
@@ -124,6 +130,19 @@ void MainWindow::incializarPersonaje()
     this->player->ubicarPersonaje(this->dim + 2, this->casilla, this->labels);
 }
 
+void MainWindow::colisionjugador(int k , int l)
+{
+    if (casilla[k][l]->getEnemigo())
+    {
+       int v=this->player->getVidas();
+       v=v-1;
+       this->player->setVidas(v);
+
+
+    }
+
+}
+
 void MainWindow::incializarEnemigo()
 {   int segundos = time_elapsed->elapsed() / 1000;
     segundos = segundos % 60;
@@ -138,12 +157,25 @@ void MainWindow::incializarEnemigo()
         pixmap = pixmap.scaled(25,25,Qt::KeepAspectRatio);
         this->enemy = new EnemigoAleatorio(pixmap);
         this->enemy->ubicarEnemigo(this->dim + 2, this->casilla, this->labels);
+
+        this->enemyA->moverEnemigo(this->enemy->getXEnemigo(),this->enemy->getYEnemigo(),this->casilla , this->labels);
+
     }
     else if(nro > porcentajeE1 && nro <= (porcentajeE1+porcentajeE2)){
-        // LLamo a que aparezca enemigo 2
+        QPixmap pixmap("C:/Users/JOAKO/Desktop/TP quirolo/TP Nº2y3/TPN3y2/enemigo.jpg");
+        pixmap = pixmap.scaled(25,25,Qt::KeepAspectRatio);
+        this->enemy = new EnemigoAleatorio(pixmap);
+        this->enemy->ubicarEnemigo(this->dim + 2, this->casilla, this->labels);
+
+     this->enemyP->moverEnemigo(this->enemy->getXEnemigo(),this->enemy->getYEnemigo(),this->casilla , this->labels);
     }
     else{
-        //LLamo a que aparezca enemigo 3
+        QPixmap pixmap("C:/Users/JOAKO/Desktop/TP quirolo/TP Nº2y3/TPN3y2/enemigo.jpg");
+        pixmap = pixmap.scaled(25,25,Qt::KeepAspectRatio);
+        this->enemy = new EnemigoAleatorio(pixmap);
+        this->enemy->ubicarEnemigo(this->dim + 2, this->casilla, this->labels);
+
+     this->enemyDS->moverEnemigo(this->enemy->getXEnemigo(),this->enemy->getYEnemigo(),this->casilla , this->labels);
     }
 
     if(segundos>=20)
@@ -193,9 +225,20 @@ void MainWindow::incializarEnemigo()
 
                                      if(segundos>=200)
                                          porcentajeE3=E*2.00;
-                                         porcentajeE2=E*000;
-                                         porcentajeE1=E*000;
+                                     porcentajeE2=E*000;
+                                     porcentajeE1=E*000;
 
 }
+
+void MainWindow::frecuenciaCreacEnemigos(int i)
+{    int segundos = time_elapsed->elapsed() / 1000;
+ segundos = segundos % 60;
+ int max=this->dim;
+ max = max/3;
+ if(segundos%10==0)
+ {if(i<max)
+     {incializarEnemigo();}
+ }}
+
 
 

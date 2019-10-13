@@ -14,9 +14,11 @@ protected:
 
 public:
     Enemigo(QPixmap pixmap);
-    virtual Casillero moverEnemigo(int k , int l ,Casillero ***&casilla)=0;
+    virtual void moverEnemigo(int k , int l ,Casillero ***&casilla, QLabel ***&labels)=0;
     virtual ~Enemigo();
     void ubicarEnemigo(int dimension, Casillero ***&c, QLabel ***&labels);
+    int getXEnemigo();
+    int getYEnemigo();
 };
 
 #endif // ENEMIGO_H

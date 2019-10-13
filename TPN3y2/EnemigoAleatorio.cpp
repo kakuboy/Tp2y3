@@ -5,68 +5,103 @@ EnemigoAleatorio::EnemigoAleatorio(QPixmap pixmap) : Enemigo (pixmap)
 
 }
 
-Casillero EnemigoAleatorio::moverEnemigo(int l , int k , Casillero ***&casilla)
+void EnemigoAleatorio::moverEnemigo(int l , int k , Casillero ***&casilla, QLabel ***&labels)
 {  int j=1+rand()%4;
    switch(j)
    {
    case 1 : if(casilla[k][l+1]->getLibre())//derecha
               {l++;
-               return *casilla[k][l];}
+           casilla[k][l]->setDatos(false, true, false);
+           this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+           labels[k][l]->setPixmap(this->imagen);
+       }
            else {
            if(casilla[k][l-1]->getLibre())
                {l--;
-                return *casilla[k][l];}
+               casilla[k][l]->setDatos(false, true, false);
+               this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+               labels[k][l]->setPixmap(this->imagen);}
                 else
                if(casilla[k+1][l]->getLibre())
                    {k++;
-                    return *casilla[k][l];}
+                   casilla[k][l]->setDatos(false, true, false);
+                   this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                   labels[k][l]->setPixmap(this->imagen);}
                 else
                {k--;
-                   return *casilla[k][l];}}
+                   casilla[k][l]->setDatos(false, true, false);
+                   this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                   labels[k][l]->setPixmap(this->imagen);}}
+       break;
    case 2 : if(casilla[k][l-1]->getLibre())//izquierda
                {l--;
-                return *casilla[k][l];}
+           casilla[k][l]->setDatos(false, true, false);
+           this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+           labels[k][l]->setPixmap(this->imagen);}
             else {
             if(casilla[k][l+1]->getLibre())
                 {l++;
-                 return *casilla[k][l];}
+                casilla[k][l]->setDatos(false, true, false);
+                this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                labels[k][l]->setPixmap(this->imagen);}
                  else
                 if(casilla[k+1][l]->getLibre())
                     {k++;
-                     return *casilla[k][l];}
+                    casilla[k][l]->setDatos(false, true, false);
+                    this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                    labels[k][l]->setPixmap(this->imagen);}
                  else
                 {k--;
-                    return *casilla[k][l];}}
-
+                    casilla[k][l]->setDatos(false, true, false);
+                    this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                    labels[k][l]->setPixmap(this->imagen);}}
+    break;
    case 3 : if(casilla[k+1][l]->getLibre())//abajo
                 {k++;
-                 return *casilla[k][l];}
+           casilla[k][l]->setDatos(false, true, false);
+           this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+           labels[k][l]->setPixmap(this->imagen);}
              else {
              if(casilla[k-1][l]->getLibre())
                  {k--;
-                  return *casilla[k][l];}
+                 casilla[k][l]->setDatos(false, true, false);
+                 this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                 labels[k][l]->setPixmap(this->imagen);}
                   else
                  if(casilla[k][l+1]->getLibre())
                      {l++;
-                      return *casilla[k][l];}
+                     casilla[k][l]->setDatos(false, true, false);
+                     this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                     labels[k][l]->setPixmap(this->imagen);}
                   else
                  {l--;
-                     return *casilla[k][l];}}
+                     casilla[k][l]->setDatos(false, true, false);
+                     this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                     labels[k][l]->setPixmap(this->imagen);}}
 
-
+    break;
    case 4 : if(casilla[k-1][l]->getLibre())//arriba
                  {k--;
-                  return *casilla[k][l];}
+           casilla[k][l]->setDatos(false, true, false);
+           this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+           labels[k][l]->setPixmap(this->imagen);}
               else {
               if(casilla[k+1][l]->getLibre())
                   {k++;
-                   return *casilla[k][l];}
+                  casilla[k][l]->setDatos(false, true, false);
+                  this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                  labels[k][l]->setPixmap(this->imagen);}
                    else
                   if(casilla[k][l+1]->getLibre())
                       {l++;
-                       return *casilla[k][l];}
+                      casilla[k][l]->setDatos(false, true, false);
+                      this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                      labels[k][l]->setPixmap(this->imagen);}
                    else
                   {l--;
-                      return *casilla[k][l];}}
+                      casilla[k][l]->setDatos(false, true, false);
+                      this->imagen = this->imagen.scaled(17,17,Qt::KeepAspectRatio);
+                      labels[k][l]->setPixmap(this->imagen);}}
+       break;
 }
-  return *casilla[k][l];}
+}

@@ -6,7 +6,7 @@ class EnemigoAleatorio : public Enemigo
 {
 public:
     EnemigoAleatorio(QPixmap);
-    Casillero moverEnemigo(int k , int l ,Casillero ***&casilla);
+    void moverEnemigo(int k , int l ,Casillero ***&casilla, QLabel ***&labels);
 };
 
 #endif // ENEMIGOALEATORIO_H

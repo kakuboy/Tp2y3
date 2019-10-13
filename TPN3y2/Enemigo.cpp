@@ -33,3 +33,13 @@ void Enemigo::ubicarEnemigo(int dimension, Casillero ***&c, QLabel ***&labels)
 
 
 }
+
+int Enemigo::getXEnemigo()
+{
+return this->xEnemigo;
+}
+
+int Enemigo::getYEnemigo()
+{
+return this->xEnemigo;
+}

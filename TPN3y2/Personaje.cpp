@@ -5,14 +5,20 @@ Personaje::Personaje(QPixmap pixmap)
     this->imagen = pixmap;
 }
 
-int Personaje::getX()
+void Personaje::setVidas(int value)
 {
-    return this->x;
+    Vidas = value;
 }
+
 
 int Personaje::getY()
 {
     return this->y;
+}
+
+int Personaje::getVidas()
+{
+    return this->Vidas;
 }
 
 void Personaje::ubicarPersonaje(int dimension, Casillero ***&c, QLabel ***&labels)
